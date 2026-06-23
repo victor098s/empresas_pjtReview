@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+.background-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.glass-card {
+  width: 700px;
+  height: 435px;
+  padding: 28px 40px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  z-index: 50;
+  color: #9a5705;
+}
+
+.logo-wrap img {
+  margin-bottom: 20px;
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-header h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.login-header p {
+  color: #9a5705;
+}
+
+.input-group {
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 6px;
+  color: #9a5705;
+}
+
+.input-group input {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.error {
+  display: block;
+  color: #9a2a05;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.divider {
+  margin: 18px 0;
+  text-align: center;
+  color: #9a5705;
+}
+
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-login button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.background-blur {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 20;
+}
+
+.background-blur.one {
+  width: 300px;
+  height: 300px;
+  background: rgba(0, 132, 255, 0.5);
+  top: -50px;
+  left: -50px;
+}
+
+.background-blur.two {
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 0, 128, 0.5);
+  bottom: -50px;
+  right: -50px;
+}
+.card-wrapper {  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 50;
+   margin-top: -40px;
+}
