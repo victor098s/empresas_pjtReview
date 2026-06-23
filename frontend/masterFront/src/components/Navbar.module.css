@@ -1,0 +1,138 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 22px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.leftGroup,
+.brand,
+.menu,
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.leftGroup {
+  gap: 34px;
+}
+
+.brand {
+  gap: 8px;
+  color: var(--primary-color);
+  font-size: 18px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.brandIcon {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--primary-color);
+  border-radius: 3px;
+  transform: rotate(30deg);
+}
+
+.brandIcon::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-top: 2px solid var(--primary-color);
+  transform: rotate(-60deg);
+}
+
+.menu {
+  height: 46px;
+  gap: 8px;
+}
+
+.navItem,
+.navAction {
+  border: 0;
+  background: transparent;
+  color: var(--text-light);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.navItem {
+  position: relative;
+  align-self: stretch;
+  padding: 0 18px;
+  font-weight: 500;
+}
+
+.navItem.active {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.navItem.active::after {
+  content: '';
+  position: absolute;
+  right: 8px;
+  bottom: 0;
+  left: 8px;
+  height: 2px;
+  background: var(--primary-color);
+}
+
+.navItem:hover,
+.navAction:hover {
+  color: var(--primary-color);
+}
+
+.actions {
+  gap: 22px;
+}
+
+.navAction {
+  padding: 4px 0;
+}
+
+@media (max-width: 720px) {
+  .navbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 16px 0;
+  }
+
+  .leftGroup {
+    width: 100%;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .menu {
+    height: 36px;
+  }
+
+  .navItem {
+    padding: 0 10px;
+  }
+
+  .actions {
+    align-self: flex-end;
+    padding-bottom: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .leftGroup {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .actions {
+    align-self: flex-start;
+  }
+}
