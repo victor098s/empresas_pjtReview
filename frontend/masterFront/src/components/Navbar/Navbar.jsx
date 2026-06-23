@@ -18,7 +18,7 @@ function Navbar() {
 
         <a href="/dashboard">Dashboard</a>
 
-        <a href="/companies">Empresas</a>
+        <a href="/empresas">Empresas</a>
 
         <a href="/products">Produtos</a>
 

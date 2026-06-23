@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import api from "../../services/api";
+import { productService } from "../../services/productService";
 import "./ProductModal.css";
 
-function ProductModal({ setOpenModal }) {
+function ProductModal({ setOpenModal, onProductCreated }) {
   const [companies, setCompanies] = useState([]);
+  const [loadingCompanies, setLoadingCompanies] = useState(true);
 
   const [form, setForm] = useState({
     nome: "",
     preco: "",
-    quantidade_estoque: "",
+    qtd_estoque: "",
     empresa_id: ""
   });
 
@@ -18,10 +19,14 @@ function ProductModal({ setOpenModal }) {
 
   async function loadCompanies() {
     try {
-      const response = await api.get("/companies");
-      setCompanies(response.data);
+      setLoadingCompanies(true);
+      const companiesData = await productService.getCompanies();
+      setCompanies(companiesData);
     } catch (error) {
       console.log(error);
+      alert("Erro ao carregar empresas.");
+    } finally {
+      setLoadingCompanies(false);
     }
   }
 
@@ -36,14 +41,10 @@ function ProductModal({ setOpenModal }) {
     e.preventDefault();
 
     try {
-      await api.post("/products", form);
-
+      await productService.createProduct(form);
+      await onProductCreated();
       alert("Produto cadastrado com sucesso!");
-
       setOpenModal(false);
-
-      window.location.reload();
-
     } catch (error) {
       console.log(error);
       alert("Erro ao cadastrar produto.");
@@ -52,9 +53,7 @@ function ProductModal({ setOpenModal }) {
 
   return (
     <div className="modal-background">
-
       <div className="modal-container">
-
         <div className="modal-header">
           <h2>Cadastrar Produto</h2>
 
@@ -67,7 +66,6 @@ function ProductModal({ setOpenModal }) {
         </div>
 
         <form onSubmit={handleSubmit}>
-
           <div className="input-group">
             <label>Nome do Produto</label>
 
@@ -81,7 +79,7 @@ function ProductModal({ setOpenModal }) {
           </div>
 
           <div className="input-group">
-            <label>Preço</label>
+            <label>Preco</label>
 
             <input
               type="number"
@@ -98,8 +96,8 @@ function ProductModal({ setOpenModal }) {
 
             <input
               type="number"
-              name="quantidade_estoque"
-              value={form.quantidade_estoque}
+              name="qtd_estoque"
+              value={form.qtd_estoque}
               onChange={handleChange}
               required
             />
@@ -113,15 +111,16 @@ function ProductModal({ setOpenModal }) {
               value={form.empresa_id}
               onChange={handleChange}
               required
+              disabled={loadingCompanies}
             >
               <option value="">
-                Selecione uma empresa
+                {loadingCompanies ? "Carregando empresas..." : "Selecione uma empresa"}
               </option>
 
               {companies.map((company) => (
                 <option
-                  key={company.id}
-                  value={company.id}
+                  key={company.id_emp}
+                  value={company.id_emp}
                 >
                   {company.nome}
                 </option>
@@ -130,7 +129,6 @@ function ProductModal({ setOpenModal }) {
           </div>
 
           <div className="buttons">
-
             <button
               type="button"
               className="cancel"
@@ -145,13 +143,9 @@ function ProductModal({ setOpenModal }) {
             >
               Salvar
             </button>
-
           </div>
-
         </form>
-
       </div>
-
     </div>
   );
 }
