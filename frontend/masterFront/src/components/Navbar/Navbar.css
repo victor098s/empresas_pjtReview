@@ -1,0 +1,33 @@
+.navbar{
+    background:white;
+    height:80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 40px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+.logo h2{
+    color:#ff6600;
+}
+
+nav{
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:black;
+    font-weight:500;
+}
+
+.logout-btn{
+    background:#ff6600;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+}

@@ -7,4 +7,4 @@ async function listarTodos() {
   return result.rows;
 }
 
-module.exports = { listarTodos, criar, atualizar, deletar };
+module.exports = { listarTodos};

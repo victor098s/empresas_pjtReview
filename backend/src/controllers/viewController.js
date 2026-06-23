@@ -15,4 +15,4 @@ async function listarTodos(req, res) {
   }
 }
 
-module.exports = { listarTodos, criar, atualizar, deletar };
+module.exports = { listarTodos};
