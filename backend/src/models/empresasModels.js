@@ -18,7 +18,7 @@ async function criar(dados) {
 async function atualizar(id, dados) {
   const { nome, cnpj, telefone } = dados;
 
-  const sql = `UPDATE companies SET nome = $1, cnpj = $2, telefone = $3 RETURNING *`;
+  const sql = `UPDATE companies SET nome = $1, cnpj = $2, telefone = $3 WHERE id_emp= $4 RETURNING *`;
 
   const result = await pool.query(sql, [nome, cnpj, telefone, id]);
 
@@ -26,10 +26,10 @@ async function atualizar(id, dados) {
 }
 
 async function deletar(id) {
-  const sql = `DELETE FROM companies WHERE id_emp = $1`;
+  const sql = `DELETE FROM companies WHERE id_emp = $1 RETURNING *`;
   const result = await pool.query(sql, [id]);
 
-  return result.rowCount[0];
+  return result.rowCount > 0;
 }
 
 module.exports = { listarTodos, criar, atualizar, deletar };

@@ -46,7 +46,9 @@ async function atualizar(req, res) {
     const id = parseInt(req.params.id);
 
     if (isNaN(id)) {
-      return res.status(400).json({ message: "O ID deve ser informado" });
+      return res
+        .status(400)
+        .json({ message: "O ID deve ser um número válido" });
     }
 
     const { nome, cnpj, telefone } = req.body;
@@ -57,7 +59,7 @@ async function atualizar(req, res) {
         .json({ message: "Todos os campos são obrigatórios" });
     }
 
-    const empresaAtualizada = await empresasModels.atualizar({
+    const empresaAtualizada = await empresasModels.atualizar(id, {
       nome,
       cnpj,
       telefone,
@@ -65,6 +67,8 @@ async function atualizar(req, res) {
 
     if (empresaAtualizada) {
       return res.status(200).json(empresaAtualizada);
+    } else {
+      return res.status(404).json({ message: "Empresa não encontrada !" });
     }
   } catch (erro) {
     res.status(500).json({
@@ -81,19 +85,19 @@ async function deletar(req, res) {
     if (isNaN(id)) {
       return res
         .status(400)
-        .json({ message: "O campo ID deve ser preenchido" });
+        .json({ message: "O campo ID deve ser um número válido" });
     }
 
     const empresaDeletada = await empresasModels.deletar(id);
 
     if (empresaDeletada) {
-      res
+      return res
         .status(200)
-        .json({ message: `Produto de id: ${id} deletado com sucesso` });
+        .json({ message: `Empresa de id: ${id} deletado com sucesso` });
     } else {
-      res
+      return res
         .status(404)
-        .json({ message: `Produto de id: ${id} não encontrado !` });
+        .json({ message: `Empresa de id: ${id} não encontrado !` });
     }
   } catch (erro) {
     res.status(500).json({
