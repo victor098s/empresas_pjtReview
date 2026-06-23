@@ -4,9 +4,9 @@ import boschLogo from "../../assets/IMG/bosch-logo.png";
 import sephoraLogo from "../../assets/IMG/sephora-logo.png";
 import vansLogo from "../../assets/IMG/vans-logo.jpg";
 import styles from "./home.module.css";
-import construcao from "../../assets/IMG/construcao.png"
-import compras from "../../assets/IMG/compras.png"
-import concluido from "../../assets/IMG/concluido.png"
+import construcao from "../../assets/IMG/construcao.png";
+import compras from "../../assets/IMG/compras.png";
+import concluido from "../../assets/IMG/concluido.png";
 
 export default function Home() {
   return (
@@ -15,8 +15,8 @@ export default function Home() {
         <h1 className={styles.logo}>RedBear Companies</h1>
 
         <nav className={styles.nav}>
-          <a href="/">Empresas</a>
-          <a href="/">Produtos</a>
+          <a href="/empresas">Empresas</a>
+          <a href="/produtos">Produtos</a>
           <button className={styles.btnSair}>Sair</button>
         </nav>
       </header>
@@ -43,7 +43,9 @@ export default function Home() {
 
           <div className={styles.card}>
             <img src={concluido} alt="concluido" />
-            <span className={`${styles.badge} ${styles.danger}`}>Alta Prioridade</span>
+            <span className={`${styles.badge} ${styles.danger}`}>
+              Alta Prioridade
+            </span>
             <h4>PEDIDOS PENDENTES</h4>
             <h2>156</h2>
           </div>
