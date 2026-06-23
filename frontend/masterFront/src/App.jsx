@@ -1,8 +1,8 @@
-import './App.module.css'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import EmpresasPage from './pages/Empresas/EmpresasPage'
-import Products from './pages/Products/Products';
-
+import "./App.css";
+import Home from "./pages/home/home";
+import Products from "./pages/Products/Products";
+import EmpresasPage from "./pages/Empresas/EmpresasPage";
+import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
@@ -12,7 +12,7 @@ function App() {
         <Route path="/produtos" element={<Products />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
