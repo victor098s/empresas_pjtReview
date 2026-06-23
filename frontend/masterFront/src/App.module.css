@@ -1,0 +1,76 @@
+:root {
+  --primary-color: #ff5f12;
+  --primary-dark: #df4c00;
+  --primary-soft: #fff1e8;
+  --danger-color: #c93324;
+  --success-color: #166534;
+  --warning-color: #f59e0b;
+  --bg-light: #f4f6f8;
+  --panel-bg: #ffffff;
+  --border-color: #d6dce2;
+  --text-color: #111827;
+  --text-light: #4b5563;
+  --text-lighter: #6b7280;
+  --muted-bg: #eef2f5;
+  --dark-accent: #172638;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.18);
+}
+
+/* Reset Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  background: var(--bg-light);
+  color: var(--text-color);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+}
+
+/* Animations Globais */
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Base */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+}

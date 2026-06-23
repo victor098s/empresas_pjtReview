@@ -1,0 +1,134 @@
+.pageContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-light);
+}
+
+.pageMain {
+  flex: 1;
+  width: 100%;
+  padding: 26px 22px 56px;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.headerContent h1 {
+  margin: 0 0 2px;
+  color: var(--text-color);
+  font-size: 29px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.1;
+}
+
+.headerSubtitle {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 13px;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--primary-color);
+  color: #ffffff;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btnPrimary:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 8px 18px rgba(255, 95, 18, 0.2);
+}
+
+.btnPrimary span {
+  font-size: 19px;
+  line-height: 1;
+}
+
+.btnLg {
+  min-height: 42px;
+  padding: 0 22px;
+  white-space: nowrap;
+}
+
+.metricsSection {
+  margin-bottom: 22px;
+}
+
+.tableSection {
+  margin-bottom: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  min-height: 48px;
+  padding: 12px 22px;
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-light);
+  font-size: 11px;
+}
+
+.footerLinks {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.footerLinks a {
+  color: var(--text-light);
+  text-decoration: underline;
+}
+
+.footerLinks a:hover {
+  color: var(--primary-color);
+}
+
+@media (max-width: 900px) {
+  .pageHeader {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .btnLg {
+    width: 100%;
+  }
+
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .pageMain {
+    padding: 20px 14px 36px;
+  }
+
+  .headerContent h1 {
+    font-size: 24px;
+  }
+
+  .footerLinks {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
