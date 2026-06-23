@@ -1,4 +1,13 @@
-const API_URL = "http://localhost:5000/api/empresas";
+const API_URL = "http://localhost:3000/empresas";
+
+function getAuthHeaders(extraHeaders = {}) {
+  const token = localStorage.getItem("token");
+
+  return {
+    ...extraHeaders,
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+  };
+}
 
 const handleResponse = async (response) => {
   const body = await response.json().catch(() => ({}));
@@ -10,12 +19,16 @@ const handleResponse = async (response) => {
 
 export const empresaService = {
   async getEmpresas() {
-    const response = await fetch(API_URL);
+    const response = await fetch(API_URL, {
+      headers: getAuthHeaders(),
+    });
     return handleResponse(response);
   },
 
   async getEmpresaById(id) {
-    const response = await fetch(`${API_URL}/${id}`);
+    const response = await fetch(`${API_URL}/${id}`, {
+      headers: getAuthHeaders(),
+    });
     return handleResponse(response);
   },
 
@@ -23,11 +36,11 @@ export const empresaService = {
     const payload = {
       razao_social: data.razaoSocial,
       cnpj: data.cnpj,
-      telefone: data.telefone
+      telefone: data.telefone,
     };
     const response = await fetch(API_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: getAuthHeaders({ "Content-Type": "application/json" }),
       body: JSON.stringify(payload),
     });
     return handleResponse(response);
@@ -37,11 +50,11 @@ export const empresaService = {
     const payload = {
       razao_social: data.razaoSocial,
       cnpj: data.cnpj,
-      telefone: data.telefone
+      telefone: data.telefone,
     };
     const response = await fetch(`${API_URL}/${id}`, {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      headers: getAuthHeaders({ "Content-Type": "application/json" }),
       body: JSON.stringify(payload),
     });
     return handleResponse(response);
@@ -50,7 +63,8 @@ export const empresaService = {
   async deleteEmpresa(id) {
     const response = await fetch(`${API_URL}/${id}`, {
       method: "DELETE",
+      headers: getAuthHeaders(),
     });
     return handleResponse(response);
-  }
+  },
 };

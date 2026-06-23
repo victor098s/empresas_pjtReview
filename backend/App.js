@@ -5,10 +5,15 @@ const port = 3000;
 const empresasRoutes = require("./src/routes/empresasRoutes");
 const productsRoutes = require("./src/routes/productsRoutes");
 const viewRouter = require("./src/routes/viewRoutes");
+const authRoutes = require("./src/routes/authRoutes");
+const { verificarToken } = require("./src/middleware/authMiddleware");
+
 app.use(express.json());
 app.use(cors());
-app.use("/empresas", empresasRoutes);
-app.use("/produtos", productsRoutes);
+
+app.use("/auth", authRoutes); 
+app.use("/empresas", verificarToken, empresasRoutes);
+app.use("/produtos", verificarToken, productsRoutes);
 app.use("/viewProd", viewRouter);
 
 app.listen(port, () => {

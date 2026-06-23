@@ -4,6 +4,7 @@ function Navbar() {
 
   function logout() {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     window.location.href = "/login";
   }
 
@@ -16,11 +17,11 @@ function Navbar() {
 
       <nav>
 
-        <a href="/dashboard">Dashboard</a>
+        <a href="/home">Home</a>
 
         <a href="/empresas">Empresas</a>
 
-        <a href="/products">Produtos</a>
+        <a href="/produtos">Produtos</a>
 
       </nav>
 

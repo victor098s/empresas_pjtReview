@@ -1,5 +1,14 @@
 const API_BASE_URL = "http://localhost:3000";
 
+function getAuthHeaders(extraHeaders = {}) {
+  const token = localStorage.getItem("token");
+
+  return {
+    ...extraHeaders,
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+  };
+}
+
 async function handleResponse(response) {
   const body = await response.json().catch(() => ({}));
 
@@ -29,14 +38,16 @@ export const productService = {
   },
 
   async getCompanies() {
-    const response = await fetch(`${API_BASE_URL}/empresas`);
+    const response = await fetch(`${API_BASE_URL}/empresas`, {
+      headers: getAuthHeaders(),
+    });
     return handleResponse(response);
   },
 
   async createProduct(data) {
     const response = await fetch(`${API_BASE_URL}/produtos`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: getAuthHeaders({ "Content-Type": "application/json" }),
       body: JSON.stringify(data),
     });
 
@@ -46,6 +57,7 @@ export const productService = {
   async deleteProduct(id) {
     const response = await fetch(`${API_BASE_URL}/produtos/${id}`, {
       method: "DELETE",
+      headers: getAuthHeaders(),
     });
 
     return handleResponse(response);
